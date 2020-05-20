@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+<meta name="viewport" content="width=device-width, initial-scale=1 " />
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>my test on BotUI</title>
+<link rel='stylesheet' href='https://unpkg.com/botui/build/botui.min.css'>
+<link rel='stylesheet' href='https://unpkg.com/botui/build/botui-theme-default.css'>
+<style>
+      .botui-app-container {
+    height: auto;
+    width: 700px;
+    overflow-y: auto;
+}
+
+.botui-message-content.text {
+    background-color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    color: #4a4a4a;
+    font-family: 'Lato', sans-serif;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.botui-message-content.loading {
+    background-color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    color: #4a4a4a;
+    border-radius: 4px;
+}
+
+.botui-actions-buttons {
+    text-align: center;
+}
+
+button.botui-actions-buttons-button {
+    outline: none !important;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: #5a46ff;
+}
+
+.botui-message-content.human {
+    background-color: #5a46ff;
+    color: #fff;
+}
+    </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="botui-app-container">
+<div id="my-botui-app">
+<bot-ui></bot-ui>
+</div>
+</div>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src='https://cdn.jsdelivr.net/vue/2.0.5/vue.min.js'></script>
+<script src='https://unpkg.com/botui/build/botui.min.js'></script>
+<script id="rendered-js">
+      var botui = new BotUI('my-botui-app');
+
+// Start Bot
+// First Messages
+botui.message.bot({
+  content: 'Hi there! &#128587;&#128587;&#128587;',
+  loading: true,
+  delay: 3000 }).
+then(function () {
+  return botui.message.bot({
+    loading: true,
+    delay: 1500,
+    content: "I'm Booboo, a web maker from Bangkok." });
+
+}).then(function () {
+  return botui.message.bot({
+    loading: true,
+    delay: 1500,
+    content: "So i wanted to share this cool things with you." });
+
+}).then(function () {
+  return botui.message.bot({
+    loading: true,
+    delay: 1500,
+content: "[datayoung](http://datayoung.com)" });
+
+}).then(function () {
+  return botui.message.bot({
+    loading: true,
+    delay: 1500,
+    content: "Pretty cool or?" });
+
+}).then(function () {
+  return botui.action.button({
+    delay: 1500,
+    loading: true,
+    addMessage: true,
+    action: [{
+      text: 'Yes!',
+      value: 'yes' },
+    {
+      text: 'No.',
+      value: 'no' }] });
+
+
+}).then(function (res) {
+  if (res.value == 'yes') {
+    return botui.message.bot({
+      loading: true,
+      delay: 1500,
+      content: "I quite agree!" });
+
+  } else {
+    return botui.message.bot({
+      loading: true,
+      delay: 1500,
+      content: "Okay, I'm sorry ..." });
+
+  }
+}).then(function () {
+  return botui.message.bot({
+    loading: true,
+    delay: 1500,
+    content: "Bye, I need to go get knowledge more ." });
+
+});
+      //# sourceURL=pen.js
+//  //  content: "[BotUI](http://docs.botui.org/)" });
+    </script>
+</body>
+</html>
